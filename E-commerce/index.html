@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nike Store</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+   
+    <style>
+        * {
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+        }
+        /*nav bar start*/
+        body {
+          font-family: "Lato", sans-serif;
+        }
+        nav {
+          background-color: black;
+          color: white;
+          padding: 20px 50px;
+          box-shadow: 5px 5px 5px white;
+        }
+        .navTop {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .navItem {
+          color: aliceblue;
+        }
+        .search {
+          align-items: center;
+          padding: 10px;
+          background-color: grey;
+          border-radius: 10px;
+        }
+        .searchInput {
+          background-color: transparent;
+          border: none;
+          color: white;
+          outline: none;
+          padding-bottom: 2px;
+        }
+        .searchInput::placeholder {
+          color: lightgray;
+        }
+        .limitedOffer {
+          padding-bottom: 2px;
+          border-bottom: 2px solid green;
+          cursor: pointer;
+          font-size: 20px;
+        }
+        .navBottom {
+          padding-top: 20px;
+          display: flex;
+          justify-content: center;
+          color: lightgray;
+        }
+        .menuItem {
+          cursor: pointer;
+          margin-right: 45px;
+          font-weight: 400;
+        }
+        /*nav bar  end*/
+        /* slider start*/
+        .slider {
+          color: aliceblue;
+          overflow: hidden;
+          clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+          padding: 0px;
+          background: url(./backround-url.jfif);
+        }
+        .sliderWrapper {
+          display: flex;
+          width: 500vw;
+        }
+        .sliderItem {
+          width: 100vw;
+          transform: translate(0vw);
+          transition: 2s;
+          display: flex;
+          justify-content: center;
+          align-self: center;
+          position: relative;
+        }
+        .sliderTitle {
+          position: absolute;
+          top: 18%;
+          left: 10%;
+          font-weight: 900;
+          font-size: 40px;
+          text-align: center;
+          z-index: 1;
+        }
+
+        .slidePrice {
+          position: absolute;
+          top: 18%;
+          right: 14%;
+          font-weight: 400;
+          font-size: 30px;
+          text-align: center;
+          border: 1px solid lightgray;
+          padding: 10px;
+          z-index: 1;
+        }
+        .buyButton {
+          position: absolute;
+          top: 70%;
+          left: 16%;
+          padding: 10px;
+          color: white;
+          background-color: rgb(48, 45, 45);
+          border: 1px solid white;
+          z-index: 1;
+        }
+        .buyButton:hover {
+          background-color: white;
+          color: green;
+          transition: all ease-in-out 0.3s;
+          font-size: 13px;
+        }
+        .slideBg {
+          height: 600px;
+          width: 600px;
+          border-radius: 50%;
+          background: yellow;
+          position: absolute;
+        }
+        .sliderImg {
+          z-index: 1;
+          height: 90%px;
+        }
+        .sliderItem:nth-child(1) .slideBg {
+          background-color: #369e62;
+        }
+        .sliderItem:nth-child(2) .slideBg {
+          background-color: rebeccapurple;
+        }
+        .sliderItem:nth-child(3) .slideBg {
+          background-color: teal;
+        }
+        .sliderItem:nth-child(4) .slideBg {
+          background-color: cornflowerblue;
+        }
+        .sliderItem:nth-child(5) .slideBg {
+          background-color: rgb(124, 115, 80);
+        }
+        .sliderItem:nth-child(1) .slidePrice {
+          color: #369e62;
+        }
+        .sliderItem:nth-child(2) .slidePrice {
+          color: rebeccapurple;
+        }
+        .sliderItem:nth-child(3) .slidePrice {
+          color: teal;
+        }
+        .sliderItem:nth-child(4) .slidePrice {
+          color: cornflowerblue;
+        }
+        .sliderItem:nth-child(5) .slidePrice {
+          color: rgb(124, 115, 80);
+        }
+        .features {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 50px;
+        }
+        .feature {
+          text-align: center;
+          width: 150px;
+          padding: 10px;
+        }
+        .featureImg {
+          height: 50px;
+          width: 50px;
+        }
+        .featureTitle {
+          margin-top: 20px;
+          margin-bottom: 20px;
+          font-weight: 800;
+        }
+        .featureDesk {
+          color: rgb(71, 68, 68);
+          font-size: 12px;
+          width: 70px;
+        }
+        /* slider end*/
+        /* product start*/
+        .product {
+          height: 125vh;
+          background-color: whitesmoke;
+          position: relative;
+          clip-path: polygon(0 0, 100% 13%, 100% 100%, 0 100%);
+
+          margin-bottom: 30px;
+        }
+        .productDetails {
+          top: 10%;
+          right: 0;
+          width: 40%;
+          position: absolute;
+          padding: 50px;
+          margin: auto 0;
+          align-items: center;
+        }
+
+        .productTitle {
+          font-weight: 900;
+          font-size: 40px;
+          margin-bottom: 20px;
+        }
+        .productContent {
+          font-size: 14px;
+          color: gray;
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
+        .colours,
+        .size {
+          display: flex;
+          margin-top: 13px;
+          margin-bottom: 20px;
+        }
+        .colour1 {
+          margin-right: 15px;
+          height: 34px;
+          width: 34px;
+          background-color: skyblue;
+          border-radius: 5px;
+        }
+        .colour2 {
+          margin-right: 15px;
+          height: 34px;
+          width: 34px;
+          background-color: purple;
+          border-radius: 5px;
+        }
+        .sizes {
+          margin-right: 10px;
+          padding: 5px 10px;
+          padding-left: 10px;
+          border: 1px solid black;
+        }
+        .productBuy {
+          float: right;
+          padding: 7px 10px;
+          color: white;
+          background-color: black;
+          border: none;
+          outline: none;
+          border-radius: 5px;
+          margin-left: 10px;
+        }
+        .productBuy:hover {
+          color: black;
+          background-color: white;
+          border: 2px solid black;
+        }
+        .sizehover {
+          color: white;
+          background: black;
+        }
+        /* product end*/
+        /*payment method*/
+        .payment {
+          position: absolute;
+          height: 470px;
+          width: 450px;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          margin: auto;
+          background-color: white;
+          padding: 10px 50px;
+          display: none;
+
+          flex-direction: column;
+          -webkit-box-shadow: -2px 3px 29px 4px rgba(125, 120, 125, 1);
+          -moz-box-shadow: -2px 3px 29px 4px rgba(125, 120, 125, 1);
+          box-shadow: -2px 3px 29px 4px rgba(125, 120, 125, 1);
+        }
+        .payinform {
+          font-size: 20px;
+          color: rgb(122, 115, 115);
+          margin-bottom: 10px;
+          margin-top: 10px;
+        }
+        .payment label {
+          font-size: 14px;
+          font-weight: 300;
+          color: rgb(112, 107, 107);
+        }
+        .payInput {
+          padding: 10px;
+          margin: 10px 0;
+          border: none;
+          border-bottom: 1px solid black;
+        }
+        .payInput::placeholder {
+          color: rgb(180, 179, 179);
+        }
+        .cardIcon {
+          margin-right: 10px;
+        }
+        .cardInfo {
+          display: flex;
+          justify-content: space-between;
+        }
+        .sm {
+          width: 30%;
+        }
+        .payButton {
+          position: absolute;
+          bottom: -40px;
+          width: 100%;
+          left: 0;
+          height: 40px;
+          border: none;
+          background-color: green;
+          color: white;
+          cursor: pointer;
+        }
+        .payClose {
+          position: absolute;
+          top: 2%;
+          padding: 3px;
+          color: white;
+          background-color: black;
+          right: 2%;
+          border: none;
+          outline: none;
+          height: 20px;
+          width: 20px;
+        }
+        .payClose:hover {
+          cursor: pointer;
+          color: white;
+          background-color: rgb(240, 54, 54);
+        }
+        .paydisplayhide {
+          display: flex;
+        }
+        /*payment end*/
+        /* galary srart*/
+        .galary {
+          display: flex;
+          flex-wrap: wrap;
+          padding: 50px;
+          justify-content: space-between;
+        }
+        .galaryItem h1 {
+          width: 300px;
+          margin: 10px;
+
+          color: rgb(44, 41, 41);
+        }
+
+        /* galary end*/
+        /* new season start*/
+        .newSeason {
+          display: flex;
+          padding: 50px;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          width: 100%;
+          background-color: black;
+          color: white;
+          align-items: center;
+        }
+        .nsTittle {
+          margin-bottom: 10px;
+        }
+        .nsTittlesm {
+          margin-bottom: 10px;
+        }
+        .nsButton {
+          padding: 5px 10px;
+          border-radius: 5px;
+          background-color: rgb(245, 245, 245);
+        }
+
+        /* new season end*/
+        /* finish start*/
+        .finish {
+          margin: 50px;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          width: 100%;
+          padding: 20px;
+        }
+        .finishItem {
+          width: 200px;
+        }
+
+        .finishtitle {
+          color: rgb(29, 28, 28);
+          font-weight: 500;
+          margin-bottom: 15px;
+        }
+        .links {
+          list-style-type: none;
+        }
+        .link {
+          color: rgb(155, 146, 146);
+          font-size: 12px;
+          font-weight: 300;
+          text-decoration: none;
+          margin-bottom: 6px;
+        }
+        .finishInp {
+          padding: 10px;
+          color: rgb(143, 132, 132);
+          border: 1px solid black;
+          outline: none;
+        }
+        .join {
+          padding: 10px;
+          color: white;
+          background: black;
+          border: none;
+          outline: none;
+          font-weight: 200;
+        }
+        .follow {
+          margin-top: 26px;
+        }
+        .icon {
+          display: flex;
+          justify-content: space-between;
+        }
+        .iconimg {
+          height: 20px;
+          width: 20px;
+        }
+        .subscribe {
+          display: flex;
+        }
+        .follow p {
+          margin-top: 10px;
+        }
+        /* finish end*/
+        @media screen and (max-width: 480px) {
+          nav {
+            padding: 20px;
+          }
+          .search {
+            display: none;
+          }
+          .navBottom {
+            flex-wrap: wrap;
+          }
+          .menuItem {
+            margin-right: 20px;
+            margin-top: 5px;
+          }
+          .slider {
+            clip-path: none;
+          }
+          .slideBg {
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+          }
+          .sliderImg {
+            width: 70%;
+            height: 70%;
+          }
+          .sliderTitle {
+            display: none;
+          }
+          .slidePrice {
+            top: 0;
+            right: 5%;
+            background-color: rgb(190, 183, 173);
+            padding: 5px;
+            border-radius: 10px;
+          }
+          .buyButton {
+            left: 0;
+            height: 40px;
+          }
+          .features {
+            flex-direction: column;
+            justify-content: center;
+          }
+          .product {
+            clip-path: none;
+            flex-direction: column;
+            display: flex;
+            align-items: center;
+            padding-bottom: 10px;
+          }
+          .productDetails {
+            top: 0;
+            right: 0;
+            padding: 10px;
+            position: relative;
+            flex-direction: column;
+            width: 100%;
+            text-align: center;
+            padding-left: 20px;
+          }
+          .payment {
+            height: 65%;
+            width: 90%;
+          }
+          .colours,
+          .size {
+            text-align: center;
+            justify-content: center;
+          }
+          .productBuy {
+            float: none;
+          }
+          .galary {
+            display: none;
+          }
+          .nsItem {
+            padding-top: 0px;
+            padding-bottom: 20px;
+          }
+          .newSeason {
+            padding: 15px;
+            padding-bottom: 10px;
+            justify-content: center;
+          }
+          .nsImg {
+            height: 200px;
+            width: 200px;
+            margin-bottom: 10px;
+          }
+          .k {
+            text-align: center;
+          }
+          .finish {
+            margin: 0;
+          }
+          .finishItem {
+            margin-top: 10px;
+          }
+        }
+
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="navTop">
+        <div class="navItem">
+          <h1>.sneakers</h1>
+        </div>
+        <div class="navItem">
+          <div class="search">
+            <input type="text" placeholder="Search..." class="searchInput" />
+            <i class="fa fa-search" style="font-size: 20px; color: white"></i>
+          </div>
+        </div>
+        <div class="navItem">
+          <span class="limitedOffer">Limited Offer</span>
+        </div>
+      </div>
+      <div class="navBottom">
+        <h3 class="menuItem">AIR FORCE</h3>
+        <h3 class="menuItem">JORDAN</h3>
+        <h3 class="menuItem">BLAZER</h3>
+        <h3 class="menuItem">CRATER</h3>
+        <h3 class="menuItem">HIPPIE</h3>
+      </div>
+    </nav>
+    <div class="slider">
+      <div class="sliderWrapper">
+        <div class="sliderItem">
+          <img
+            src="./nike2-removebg-preview.png"
+            width="50%"
+            height="50%"
+            class="sliderImg"
+            alt=""
+          />
+          <div class="slideBg"></div>
+          <h1 class="sliderTitle">AIR FORCE <br>NEW <br>SEASON</BR></h1>
+          <h2 class="slidePrice">$299</h2>
+          <button class="buyButton">Buy Now!</button>
+        </div>
+        <div class="sliderItem">
+            <img
+              src="./img-2-removebg-preview.png"
+              width="70%"
+              height="70%"
+              class="sliderImg"
+              alt=""
+            />
+            <div class="slideBg"></div>
+            <h1 class="sliderTitle"> JORDAN <br>NEW <br>SEASON</BR></h1>
+            <h2 class="slidePrice">$399</h2>
+            <button class="buyButton">Buy Now</button>
+          </div>
+          <div class="sliderItem">
+            <img
+              src="./img-3-removebg-preview.png"
+              width="60%"
+              height="40%"
+              class="sliderImg"
+              alt=""
+            />
+            <div class="slideBg"></div>
+            <h1 class="sliderTitle">BLAZER <br>NEW <br>SEASON</BR></h1>
+            <h2 class="slidePrice">$149</h2>
+            <button class="buyButton">Buy Now</button>
+          </div>
+          <div class="sliderItem">
+            <img
+              src="./img-4-removebg-preview.png"
+              width="70%"
+              height="80%"
+              class="sliderImg"
+              alt=""
+            />
+            <div class="slideBg"></div>
+            <h1 class="sliderTitle">CRATER <br>NEW <br>SEASON</BR></h1>
+            <h2 class="slidePrice">$119</h2>
+            <button class="buyButton">Buy Now</button>
+          </div>
+          <div class="sliderItem">
+            <img
+              src="./imgg-removed-backround.png"
+              height="60%"
+              width="60%"
+              
+              class="sliderImg"
+              alt=""
+            />
+            <div class="slideBg"></div>
+            <h1 class="sliderTitle">HIPPIE <br>NEW <br>SEASON</BR></h1>
+            <h2 class="slidePrice">$459</h2>
+            <button class="buyButton">Buy Now</button>
+          </div>
+      </div>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <img src="./free-delivery.jfif" class="featureImg" alt=""><br>
+        <span class="featureTitle">FREE CHIPPING</span><br>
+        <span class="featureDesk">Fre Worldwide shiping on all orders </span>
+      </div>
+      <div class="feature">
+        <img src="./return-img.webp" class="featureImg" alt=""><br>
+        <span class="featureTitle">30 DAYS RETURN</span><br>
+        <span class="featureDesk">No question return and easy refund in 14 days </span>
+      </div>
+      <div class="feature">
+        <img src="./gift-card- img.png" class="featureImg" alt=""><br>
+        <span class="featureTitle">GIFT CARDS</span><br>
+        <span class="featureDesk">Buy gift cards and use coupon codes easily </span>
+      </div>
+      <div class="feature">
+        <img src="./contact-img.png" class="featureImg" alt=""><br>
+        <span class="featureTitle">CONTACT US!</span><br>
+        <span class="featureDesk">Keep in touch via email and support system</span>
+      </div>
+     
+    </div>
+    <div class="product">
+          <img
+          src="./nike2-removebg-preview.png"
+          width="40%"
+          height="99%"
+          class="productImg"
+          alt=""/>
+          <div class="productDetails">
+            <h1 class="productTitle">AIR FORCE</h1>
+            <h3 class="productPrice">$299</h3>
+            <p class="productContent">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis repudiandae corporis, animi delectus itaque omnis quia fugiat? Eius sapiente facere recusandae eaque assumenda eum omnis quas vitae voluptates, nihil debitis!
+            </p>
+            <div class="colours">
+              <div class="colour1 colour"></div>
+              <div class="colour2 colour"></div>
+            </div>
+            <div class="size">
+              <span class="sizes">42</span>
+              <span class="sizes">43</span>
+              <span class="sizes">44</span>
+            </div>
+            <button class="productBuy">BUY NOW!</button>
+          </div>
+          <div class="payment">
+            <h1 class="payinform">Persnol Information</h1>
+            <label for="" class="lable">Name and Surname</label>
+            <input type="text" placeholder="Elavarasan" class="payInput">
+            <label for="">Phone Number</label>
+            <input type="number" placeholder="9345448925" class="payInput">
+            <label for="">address</label>
+            <input type="text" placeholder="Type your Address.." class="payInput">
+            <h1 class="payinform">Card Information</h1>
+             <div class="cardIcons">
+               <img height="30"   width="40px" src="./visacard-removebg-preview.png" class="cardIcon" alt="">
+               <img height="30" width="40" src="./mastercard-removebg-preview.png" class="cardIcon" alt="">
+             </div>
+             <input type="password" placeholder="pass word" class="payInput">
+             <div class="cardInfo">
+               <input type="text" placeholder="mm" class="payInput sm">
+               <input type="text" placeholder="yyyy" class="payInput sm">
+               <input type="text" placeholder="cvv" class="payInput sm">
+             </div>
+             <button class="payButton">Checkout!</button>
+             <button class="payClose">X</button>
+          </div>
+      
+    </div>
+    <div class="galary">
+        <div class="galaryItem">
+          <h1 class="galaryTitle">Be Yourself!</h1>
+          <img src="./be-yourself.jfif"  alt="" class="galaryImg">
+
+        </div>
+        <div class="galaryItem">
+          <img src="first-day.jfif"  alt="" class="galaryImg">
+          <h1 class="galaryTitle">This is the first day of Your new life</h1>
+          
+        </div>
+        <div class="galaryItem">
+          <h1 class="galaryTitle">just do it!</h1>
+          <img src="./just do it.jfif"  alt="" class="galaryImg">
+          
+        </div>
+    </div>
+    <div class="newSeason">
+        <div class="nsItem">
+          <img src="./newseson-img-1.jpg" class="nsImg"  height="300" width="300" alt="">
+        </div>
+        <div class="nsItem k">
+          <h3 class="nsTittlesm">WINTER NEW ARRIVALS</h3>
+          <h1 class="nsTittle">New Season</h1>
+          <h1 class="nsTittle">New Collection</h1>
+          <button class="nsButton">CHOOSE YOUR STYLE</button>
+        </div>
+        <div class="nsImg">
+          <img class="nsImg" src="./neaseson-img-2.jfif" alt=""  height="300" width="300">
+        </div>
+      
+      
+    </div>
+    <div class="finish">
+      <div class="finishItem">
+        <h3 class="finishtitle">About Us</h3>
+        <ul class="links">
+          <li><a class="link" href="#">Company</a></li>
+          <li><a class="link" href="#">Contact</a></li>
+          <li><a class="link" href="#">Careers</a></li>
+          <li><a class="link" href="#">Affilates</a></li>
+          <li><a class="link" href="#">Stores</a></li>
+        </ul>
+      </div>
+      <div class="finishItem">
+        <h3 class="finishtitle">Useful Links</h3>
+        <ul class="links">
+          <li><a class="link" href="#">Support</a></li>
+          <li><a class="link" href="#">Refound</a></li>
+          <li><a class="link" href="#">FAQ</a></li>
+          <li><a class="link" href="#">Feedback</a></li>
+          <li><a class="link" href="#">Stories</a></li>
+        </ul>
+      </div>
+      <div class="finishItem">
+        <h3 class="finishtitle">Products</h3>
+        <ul class="links">
+          <li><a class="link" href="#">Air Force</a></li>
+          <li><a class="link" href="#">Air Jordan</a></li>
+          <li><a class="link" href="#">Biazer</a></li>
+          <li><a class="link" href="#">Crater</a></li>
+          <li><a class="link" href="#">Hippie</a></li>
+        </ul>
+      </div>
+      
+      <div class="finishItem">
+       <h3 class="finishtitle">Subscribe to our newsletter</h3>
+       <div class="subscribe">
+        
+        <input type="email" placeholder="your@email.com" class="finishInp">
+        <button class="join">Join</button>
+       </div>
+       <div class="follow">
+         <h3 class="finishtitle">Follow Us</h3>
+         <div class="icon">
+           <a target="_blank" href="https://api.whatsapp.com/send?phone=9345448925&text=hi%20welcome%20to%20my%20whatshap"><img src="./whatshap-removebg-preview.png" class="iconimg" alt=""></a>
+           <a target="_blank" href="https://www.google.com/url?sa=t&source=web&rct=j&url=https://www.instagram.com/sanjai_11122/&ved=2ahUKEwiO1NedjY_3AhVDDN4KHYvZCsQQFnoECAMQAQ&usg=AOvVaw3tmiwgCkK4ozwkvJ505lgJ"><img src="./instagram-removebg-preview.png" class="iconimg" alt=""></a>
+           <a target="_blank" href="https://m.facebook.com/100052008711039/"><img src="./facebook-removebg-preview.png" class="iconimg" alt=""></a>
+           <a target="_blank" href="https://maps.app.goo.gl/Uh5GdXvdtYBvw8fH8"><img src="./mastercard-removebg-preview.png" class="iconimg" alt=""></a>
+           
+         </div>
+         <p class="link">&copy;Elavrasan All right  reserved 2022</p>
+       </div>
+    </div>
+    <script >
+       "use strict";
+        const objec = [
+          {
+            price: 299,
+            productname: "AIR FORCE",
+            image: "./nike2-removebg-preview.png",
+            colours: [
+              {
+                colour: "blue",
+                img: "./nike2-removebg-preview.png",
+              },
+              {
+                colour: "purple",
+                img: "shoeimg-4-removebg-preview.png",
+              },
+            ],
+          },
+          {
+            price: 399,
+            productname: "AIR JORDAN",
+            image: "./img-2-removebg-preview.png",
+            colours: [
+              {
+                colour: "red",
+                img: "./img-2-removebg-preview.png",
+              },
+              { colour: "yellow", img: "./img2-pare-removebg-preview.png" },
+            ],
+          },
+          {
+            price: 149,
+            productname: "AIR BLAZER",
+            image: "./img-3-removebg-preview.png",
+            colours: [
+              {
+                colour: "black",
+                img: "./img-3-removebg-preview.png",
+              },
+              { colour: "green", img: "./img-3-pare-removebg-preview.png" },
+            ],
+          },
+          {
+            price: 119,
+            productname: "AIR CRATER",
+            image: "./img-4-removebg-preview.png",
+            colours: [
+              {
+                colour: "blue",
+                img: "./img-4-removebg-preview.png",
+              },
+              { colour: "gray", img: "./img-4-pare-removebg-preview.png" },
+            ],
+          },
+          {
+            price: 459,
+            productname: "AIR HIPPIE",
+            image: "./imgg-removed-backround.png",
+            colours: [
+              {
+                colour: "#d4cfcf",
+                img: "./imgg-removed-backround.png",
+              },
+              { colour: "orangered", img: "./img-5-pare-removebg-preview.png" },
+            ],
+          },
+        ];
+        const menuItem = document.querySelectorAll(".menuItem");
+        const navBottom = document.querySelector(".navBottom");
+        let sliderchange = 0;
+        const colours = document.querySelectorAll(".colour");
+        const title = document.querySelector(".productTitle");
+        const price = document.querySelector(".productPrice");
+        const src = document.querySelector(".productImg");
+        const slidersrc = document.querySelector(".sliderImg");
+        const product = document.querySelector(".product");
+        const buyBotton = document.querySelectorAll(".buyButton");
+
+        ///////
+        menuItem.forEach((mov, i) => {
+          mov.addEventListener("click", () => {
+            sliderchange = i;
+            document.querySelector(".sliderWrapper").style.transform = `translate(${
+              i * -100
+            }vw)`;
+            console.log(sliderchange);
+            document.querySelector(".sliderWrapper").style.transition = "0.4s";
+            //text change
+            title.textContent = objec[sliderchange].productname;
+            price.textContent = `$${objec[sliderchange].price}`;
+            src.src = objec[sliderchange].image;
+            //coloour change
+            colours.forEach((mov, index) => {
+              mov.style.backgroundColor = `${objec[sliderchange].colours[index].colour}`;
+            });
+          });
+        });
+        //////
+        colours.forEach((mov, i) => {
+          mov.addEventListener("click", () => {
+            src.src = `${objec[sliderchange].colours[i].img}`;
+          });
+        });
+        /////////////////scroll smooth
+        //buyBotton.forEach((mov) => {
+        //  mov.addEventListener("click", (e) => {
+        //    e.preventDefault();
+        //    product.scrollIntoView({ behavior: "smooth" });
+        //  });
+        //});
+        document.querySelector(".sliderWrapper").addEventListener("click", (e) => {
+          const click = e.target.classList.contains("buyButton");
+          if (!click) return;
+          e.preventDefault();
+          product.scrollIntoView({ behavior: "smooth" });
+        });
+        //////size
+        const size = document.querySelector(".size");
+        size.addEventListener("click", (e) => {
+          const click = e.target.classList.contains("sizes");
+          if (!click) return;
+          document.querySelectorAll(".sizes").forEach((mov) => {
+            mov.classList.remove("sizehover");
+          });
+          e.target.classList.add("sizehover");
+        });
+        //////////////////////////////////////
+        //product buy buton
+        const productbuy = document.querySelector(".productBuy");
+        const payment = document.querySelector(".payment");
+        const payClose = document.querySelector(".payClose");
+
+        productbuy.addEventListener("click", () => {
+          payment.classList.add("paydisplayhide");
+        });
+        payClose.addEventListener("click", () => {
+          payment.classList.remove("paydisplayhide");
+        });
+        ////////////////////////////
+        //choose your style scrool smooth
+        const choosestyle = document.querySelector(".nsButton");
+        choosestyle.addEventListener("click", () => {
+          document.querySelector("nav").scrollIntoView({ behavior: "smooth" });
+        });
+
+    </script> 
+  </body>
+</html>
